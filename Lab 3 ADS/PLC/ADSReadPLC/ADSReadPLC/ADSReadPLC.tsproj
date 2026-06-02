@@ -1,0 +1,946 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.22">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
+			<BitSize>48</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>%d.%d.%d.%d.%d.%d</Printf>
+				<Parameter>[0]</Parameter>
+				<Parameter>[1]</Parameter>
+				<Parameter>[2]</Parameter>
+				<Parameter>[3]</Parameter>
+				<Parameter>[4]</Parameter>
+				<Parameter>[5]</Parameter>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{DFC06E3F-D7DF-42FD-A9CE-ACC42E4C49B0}" TcBaseType="true">OpcUaPubSubState</Name>
+			<BitSize>16</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
+			<EnumInfo>
+				<Text><![CDATA[Disabled]]></Text>
+				<Enum>0</Enum>
+			</EnumInfo>
+			<EnumInfo>
+				<Text><![CDATA[Paused]]></Text>
+				<Enum>1</Enum>
+			</EnumInfo>
+			<EnumInfo>
+				<Text><![CDATA[Operational]]></Text>
+				<Enum>2</Enum>
+			</EnumInfo>
+			<EnumInfo>
+				<Text><![CDATA[Error]]></Text>
+				<Enum>3</Enum>
+			</EnumInfo>
+			<EnumInfo>
+				<Text><![CDATA[PreOperational]]></Text>
+				<Enum>4</Enum>
+			</EnumInfo>
+			<Default>
+				<EnumText>Disabled</EnumText>
+			</Default>
+			<Format>
+				<Printf></Printf>
+			</Format>
+			<Properties>
+				<Property>
+					<Name>plcAttribute_qualified_only</Name>
+				</Property>
+				<Property>
+					<Name>plcAttribute_strict</Name>
+				</Property>
+				<Property>
+					<Name>plcAttribute_to_string</Name>
+				</Property>
+			</Properties>
+		</DataType>
+		<DataType>
+			<Name GUID="{03010035-0000-0000-E000-000000000064}" TcBaseType="true">ITcIoEthProtocol</Name>
+			<BitSize X64="64">32</BitSize>
+			<BaseType GUID="{00000001-0000-0000-E000-000000000064}">ITcUnknown</BaseType>
+			<Method>
+				<Name>CheckFrame</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType>
+				<ReturnBitSize>32</ReturnBitSize>
+				<Parameter>
+					<Name>pData</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000018}">PVOID</Type>
+					<BitSize X64="64">32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>nData</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>nVLanTag</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>nTimeStamp</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+			</Method>
+			<Method>
+				<Name>LinkStatusChanged</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType>
+				<ReturnBitSize>32</ReturnBitSize>
+				<Parameter>
+					<Name>bLinkError</Name>
+					<Type GUID="{9060AE9D-214D-4685-A4C0-CD1082626764}">BOOL32</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+			</Method>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00000000003E}" TcBaseType="true" HideSubItems="true">IPADDR</Name>
+			<BitSize>32</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>4</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>%d.%d.%d.%d</Printf>
+				<Parameter>[3]</Parameter>
+				<Parameter>[2]</Parameter>
+				<Parameter>[1]</Parameter>
+				<Parameter>[0]</Parameter>
+			</Format>
+		</DataType>
+	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424de6000000000000007600000028000000100000000e000000010004000000000070000000000000000000000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00dddddddddcccddddddd777ddcdddcddddddddddcdddddcdddd7777dcddccccdddddddddcddcddcdddddd77ddcdcdcddddddddddddcccdddddd00dd0ddddd00dd8088080888808808d0dd0d0dddd0dddd8088080008808888d0dd0d0dd0d0dddd8088080880808808dd00dd000ddd00dd</ImageData>
+		<ImageData Id="1001">424d16050000000000003604000028000000100000000e0000000100080000000000e00000000000000000000000000000000000000000000000000080000080000000808000800000008000800080800000c0c0c000c0dcc000f0caa6000020400000206000002080000020a0000020c0000020e00000400000004020000040400000406000004080000040a0000040c0000040e00000600000006020000060400000606000006080000060a0000060c0000060e00000800000008020000080400000806000008080000080a0000080c0000080e00000a0000000a0200000a0400000a0600000a0800000a0a00000a0c00000a0e00000c0000000c0200000c0400000c0600000c0800000c0a00000c0c00000c0e00000e0000000e0200000e0400000e0600000e0800000e0a00000e0c00000e0e00040000000400020004000400040006000400080004000a0004000c0004000e00040200000402020004020400040206000402080004020a0004020c0004020e00040400000404020004040400040406000404080004040a0004040c0004040e00040600000406020004060400040606000406080004060a0004060c0004060e00040800000408020004080400040806000408080004080a0004080c0004080e00040a0000040a0200040a0400040a0600040a0800040a0a00040a0c00040a0e00040c0000040c0200040c0400040c0600040c0800040c0a00040c0c00040c0e00040e0000040e0200040e0400040e0600040e0800040e0a00040e0c00040e0e00080000000800020008000400080006000800080008000a0008000c0008000e00080200000802020008020400080206000802080008020a0008020c0008020e00080400000804020008040400080406000804080008040a0008040c0008040e00080600000806020008060400080606000806080008060a0008060c0008060e00080800000808020008080400080806000808080008080a0008080c0008080e00080a0000080a0200080a0400080a0600080a0800080a0a00080a0c00080a0e00080c0000080c0200080c0400080c0600080c0800080c0a00080c0c00080c0e00080e0000080e0200080e0400080e0600080e0800080e0a00080e0c00080e0e000c0000000c0002000c0004000c0006000c0008000c000a000c000c000c000e000c0200000c0202000c0204000c0206000c0208000c020a000c020c000c020e000c0400000c0402000c0404000c0406000c0408000c040a000c040c000c040e000c0600000c0602000c0604000c0606000c0608000c060a000c060c000c060e000c0800000c0802000c0804000c0806000c0808000c080a000c080c000c080e000c0a00000c0a02000c0a04000c0a06000c0a08000c0a0a000c0a0c000c0a0e000c0c00000c0c02000c0c04000c0c06000c0c08000c0c0a000f0fbff00a4a0a000808080000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff0005050505050505050505050505050505efefefeff905efefefefefefefefefef0505050505f905050505050505050505efefefefefeff905efefefefefefefef05050505050505f90505050505050505efefefefefefefeff905efefefefefeffdfdfdfdfdfdfdfdfdf905fdfdfdfdfdfdfdfd050505fdfdfdfdf905fdfd05fdfdfd0507070705fdfdfdfdf905fdf9fdfd05070707070705fdfdfdfdf905f9fdfd05070705050505fdfdfd0505f9f9fdfd05070705070705fdfdfdf9f9f9f9fdfdfd0507050705fdfdfdfdfdfdfdfdfdfdfdfd050505fdfdfdfdfdfdfdfdfdfd</ImageData>
+		<ImageData Id="1002">424d16050000000000003604000028000000100000000e00000001000800000000000000000000000000000000000001000000010000000000ff000080ff008000ff008080ff800000ff800080ff808000ffc0c0c0ffc0dcc0fff0caa6ff002040ff002060ff002080ff0020a0ff0020c0ff0020e0ff004000ff004020ff004040ff004060ff004080ff0040a0ff0040c0ff0040e0ff006000ff006020ff006040ff006060ff006080ff0060a0ff0060c0ff0060e0ff008000ff008020ff008040ff008060ff008080ff0080a0ff0080c0ff0080e0ff00a000ff00a020ff00a040ff00a060ff00a080ff00a0a0ff00a0c0ff00a0e0ff00c000ff00c020ff00c040ff00c060ff00c080ff00c0a0ff00c0c0ff00c0e0ff00e000ff00e020ff00e040ff00e060ff00e080ff00e0a0ff00e0c0ff00e0e0ff400000ff400020ff400040ff400060ff400080ff4000a0ff4000c0ff4000e0ff402000ff402020ff402040ff402060ff402080ff4020a0ff4020c0ff4020e0ff404000ff404020ff404040ff404060ff404080ff4040a0ff4040c0ff4040e0ff406000ff406020ff406040ff406060ff406080ff4060a0ff4060c0ff4060e0ff408000ff408020ff408040ff408060ff408080ff4080a0ff4080c0ff4080e0ff40a000ff40a020ff40a040ff40a060ff40a080ff40a0a0ff40a0c0ff40a0e0ff40c000ff40c020ff40c040ff40c060ff40c080ff40c0a0ff40c0c0ff40c0e0ff40e000ff40e020ff40e040ff40e060ff40e080ff40e0a0ff40e0c0ff40e0e0ff800000ff800020ff800040ff800060ff800080ff8000a0ff8000c0ff8000e0ff802000ff802020ff802040ff802060ff802080ff8020a0ff8020c0ff8020e0ff804000ff804020ff804040ff804060ff804080ff8040a0ff8040c0ff8040e0ff806000ff806020ff806040ff806060ff806080ff8060a0ff8060c0ff8060e0ff808000ff808020ff808040ff808060ff808080ff8080a0ff8080c0ff8080e0ff80a000ff80a020ff80a040ff80a060ff80a080ff80a0a0ff80a0c0ff80a0e0ff80c000ff80c020ff80c040ff80c060ff80c080ff80c0a0ff80c0c0ff80c0e0ff80e000ff80e020ff80e040ff80e060ff80e080ff80e0a0ff80e0c0ff80e0e0ffc00000ffc00020ffc00040ffc00060ffc00080ffc000a0ffc000c0ffc000e0ffc02000ffc02020ffc02040ffc02060ffc02080ffc020a0ffc020c0ffc020e0ffc04000ffc04020ffc04040ffc04060ffc04080ffc040a0ffc040c0ffc040e0ffc06000ffc06020ffc06040ffc06060ffc06080ffc060a0ffc060c0ffc060e0ffc08000ffc08020ffc08040ffc08060ffc08080ffc080a0ffc080c0ffc080e0ffc0a000ffc0a020ffc0a040ffc0a060ffc0a080ffc0a0a0ffc0a0c0ffc0a0e0ffc0c000ffc0c020ffc0c040ffc0c060ffc0c080ffc0c0a0fff0fbffffa4a0a0ff808080ff0000ffff00ff00ff00ffffffff0000ffff00ffffffff00ffffffffff05050505050505050505050505050505efefefefefefefefefefefefefefefef05050505050505050505050505050505efefefefefefefefefefefefefefefef05050505010101010101010101050505efefefef01574f4f4f4e0e0e01efefeffdfd0101010101010101014e01fdfdfdfdfd015757574f4e4e0e014e01fdfdfdfdfd015757574f4e4e0e014e01fdfdfdfdfd015757574f4e4e4e014f01fdfdfdfdfd015f5f57574f4f4e010101fdfdfdfdfd019f9f57574f4f4f01fdfdfdfdfdfdfd010101010101010101fdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfd</ImageData>
+		<ImageData Id="1003">424d16050000000000003604000028000000100000000e0000000100080000000000e00000000000000000000000000000000000000000000000000080000080000000808000800000008000800080800000c0c0c000c0dcc000f0caa6000020400000206000002080000020a0000020c0000020e00000400000004020000040400000406000004080000040a0000040c0000040e00000600000006020000060400000606000006080000060a0000060c0000060e00000800000008020000080400000806000008080000080a0000080c0000080e00000a0000000a0200000a0400000a0600000a0800000a0a00000a0c00000a0e00000c0000000c0200000c0400000c0600000c0800000c0a00000c0c00000c0e00000e0000000e0200000e0400000e0600000e0800000e0a00000e0c00000e0e00040000000400020004000400040006000400080004000a0004000c0004000e00040200000402020004020400040206000402080004020a0004020c0004020e00040400000404020004040400040406000404080004040a0004040c0004040e00040600000406020004060400040606000406080004060a0004060c0004060e00040800000408020004080400040806000408080004080a0004080c0004080e00040a0000040a0200040a0400040a0600040a0800040a0a00040a0c00040a0e00040c0000040c0200040c0400040c0600040c0800040c0a00040c0c00040c0e00040e0000040e0200040e0400040e0600040e0800040e0a00040e0c00040e0e00080000000800020008000400080006000800080008000a0008000c0008000e00080200000802020008020400080206000802080008020a0008020c0008020e00080400000804020008040400080406000804080008040a0008040c0008040e00080600000806020008060400080606000806080008060a0008060c0008060e00080800000808020008080400080806000808080008080a0008080c0008080e00080a0000080a0200080a0400080a0600080a0800080a0a00080a0c00080a0e00080c0000080c0200080c0400080c0600080c0800080c0a00080c0c00080c0e00080e0000080e0200080e0400080e0600080e0800080e0a00080e0c00080e0e000c0000000c0002000c0004000c0006000c0008000c000a000c000c000c000e000c0200000c0202000c0204000c0206000c0208000c020a000c020c000c020e000c0400000c0402000c0404000c0406000c0408000c040a000c040c000c040e000c0600000c0602000c0604000c0606000c0608000c060a000c060c000c060e000c0800000c0802000c0804000c0806000c0808000c080a000c080c000c080e000c0a00000c0a02000c0a04000c0a06000c0a08000c0a0a000c0a0c000c0a0e000c0c00000c0c02000c0c04000c0c06000c0c08000c0c0a000f0fbff00a4a0a000808080000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff0005050505050505050505050505050505efefefefefefefefefefefefefefefef05050505050505050505050505050505efefefefefefefefefefefefefefefef05050505010101010101010101050505efefefef01574f4f4f0e0e0e01efefeffdfd0101010101010101016701fdfdfdfdfd015757574f4e4e0e016766fdfdfdfdfd015757574f4e67676f7f6667fdfdfdfd015757574f4e7f7f7f7f7f7f7ffdfdfd015f5f57574fbfbfbfbf7f7ffdfdfdfd019f9f57574f4f4e01bf7ffdfdfdfdfd0101010101010101017ffdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfd</ImageData>
+	</ImageDatas>
+	<Project ProjectGUID="{AF78DA7F-91D6-4554-967C-447463828CBB}" TargetNetId="10.10.11.1.1.1" Target64Bit="true" ShowHideConfigurations="#x6">
+		<System>
+			<Licenses>
+				<Target>
+					<ManualSelect>{3EBB9639-5FF3-42B6-8847-35C70DC013C8}</ManualSelect>
+				</Target>
+			</Licenses>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{D0326A5C-A81F-4A59-B29F-D59FDAC5BA45}" Name="PLCData" PrjFilePath="PLCData\PLCData.plcproj" TmcFilePath="PLCData\PLCData.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{23D9C9CA-7459-9E6F-4AD8-845D4D9131E2}" TmcPath="PLCData\PLCData.tmc">
+					<Name>PLCData Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Contexts>
+						<Context>
+							<Id>0</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+		<Io>
+			<Device Id="1" DevType="155" AmsNetId="10.10.11.1.2.1">
+				<Name>Device 1 (OPC UA RT)</Name>
+				<ImageId>1000</ImageId>
+				<AddressInfo>
+					<Pnp>
+						<DeviceDesc>X001 EtherCAT Network (TwinCAT-Intel PCI Ethernet A</DeviceDesc>
+						<DeviceName>\DEVICE\{541883AD-F1C3-41B9-967B-279FCCF2FC4B}</DeviceName>
+						<DeviceData>000105a46d33</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<Vars VarGrpType="1">
+					<Name>State</Name>
+					<Var>
+						<Name>DevState</Name>
+						<Comment><![CDATA[0x0001 = Link Error
+0x0002 = MQTT Connection Error]]></Comment>
+						<Type>WORD</Type>
+					</Var>
+					<Var>
+						<Name>AmsNetId</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
+						<BitOffs>16</BitOffs>
+						<ExternalAddress>16</ExternalAddress>
+					</Var>
+				</Vars>
+				<Vars VarGrpType="1">
+					<Name>Inputs</Name>
+				</Vars>
+				<Vars VarGrpType="2">
+					<Name>Outputs</Name>
+					<Var>
+						<Name>DevCtrl</Name>
+						<Type>WORD</Type>
+					</Var>
+				</Vars>
+				<Image Id="1" ImageFlags="#x00000030" AddrType="1" ImageType="3" SizeIn="3" SizeOut="14">
+					<Name>Image</Name>
+				</Image>
+				<Module Id="#x01010010" KeepUnrestoredLinks="2" TcSmClass="CTComOpcUaObjDef">
+					<Name>Publisher1</Name>
+					<ImageId>1001</ImageId>
+					<Xml>
+						<TcSmExtensions>
+							<TcSmExtension Guid="{C81CD753-E8EB-4086-9C43-151D85679965}">
+								<DataTypePrefix>OpcUa_</DataTypePrefix>
+								<GroupVersionHash>36084819B91D9C97489E043161702221</GroupVersionHash>
+								<GroupVersion>6/1/2026 11:24:44 AM</GroupVersion>
+							</TcSmExtension>
+						</TcSmExtensions>
+					</Xml>
+					<TmcDesc GUID="{B40952E1-97C3-4B88-8DBF-5FA69ED3F5F3}" TcSmClass="CTComOpcUaObjDef">
+						<Name>OPC UA Publisher</Name>
+						<CLSID ClassFactory="TcIoOpcUa">{0313008E-0000-0000-F000-000000000064}</CLSID>
+						<Info>
+							<ImageData>424d16050000000000003604000028000000100000000e0000000100080000000000e00000000000000000000000000000000000000000000000000080000080000000808000800000008000800080800000c0c0c000c0dcc000f0caa6000020400000206000002080000020a0000020c0000020e00000400000004020000040400000406000004080000040a0000040c0000040e00000600000006020000060400000606000006080000060a0000060c0000060e00000800000008020000080400000806000008080000080a0000080c0000080e00000a0000000a0200000a0400000a0600000a0800000a0a00000a0c00000a0e00000c0000000c0200000c0400000c0600000c0800000c0a00000c0c00000c0e00000e0000000e0200000e0400000e0600000e0800000e0a00000e0c00000e0e00040000000400020004000400040006000400080004000a0004000c0004000e00040200000402020004020400040206000402080004020a0004020c0004020e00040400000404020004040400040406000404080004040a0004040c0004040e00040600000406020004060400040606000406080004060a0004060c0004060e00040800000408020004080400040806000408080004080a0004080c0004080e00040a0000040a0200040a0400040a0600040a0800040a0a00040a0c00040a0e00040c0000040c0200040c0400040c0600040c0800040c0a00040c0c00040c0e00040e0000040e0200040e0400040e0600040e0800040e0a00040e0c00040e0e00080000000800020008000400080006000800080008000a0008000c0008000e00080200000802020008020400080206000802080008020a0008020c0008020e00080400000804020008040400080406000804080008040a0008040c0008040e00080600000806020008060400080606000806080008060a0008060c0008060e00080800000808020008080400080806000808080008080a0008080c0008080e00080a0000080a0200080a0400080a0600080a0800080a0a00080a0c00080a0e00080c0000080c0200080c0400080c0600080c0800080c0a00080c0c00080c0e00080e0000080e0200080e0400080e0600080e0800080e0a00080e0c00080e0e000c0000000c0002000c0004000c0006000c0008000c000a000c000c000c000e000c0200000c0202000c0204000c0206000c0208000c020a000c020c000c020e000c0400000c0402000c0404000c0406000c0408000c040a000c040c000c040e000c0600000c0602000c0604000c0606000c0608000c060a000c060c000c060e000c0800000c0802000c0804000c0806000c0808000c080a000c080c000c080e000c0a00000c0a02000c0a04000c0a06000c0a08000c0a0a000c0a0c000c0a0e000c0c00000c0c02000c0c04000c0c06000c0c08000c0c0a000f0fbff00a4a0a000808080000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff0005050505050505050505050505050505efefefeff905efefefefefefefefefef0505050505f905050505050505050505efefefefefeff905efefefefefefefef05050505050505f90505050505050505efefefefefefefeff905efefefefefeffdfdfdfdfdfdfdfdfdf905fdfdfdfdfdfdfdfd050505fdfdfdfdf905fdfd05fdfdfd0507070705fdfdfdfdf905fdf9fdfd05070707070705fdfdfdfdf905f9fdfd05070705050505fdfdfd0505f9f9fdfd05070705070705fdfdfdf9f9f9f9fdfdfd0507050705fdfdfdfdfdfdfdfdfdfdfdfd050505fdfdfdfdfdfdfdfdfdfd</ImageData>
+							<TabExtension GUID="{CD76A18D-CB13-48DC-B9DF-69EF62AB5DBB}"/>
+						</Info>
+						<InitSequence>SO</InitSequence>
+						<Contexts>
+							<Context>
+								<Id>1</Id>
+								<DependOn>ParentObject</DependOn>
+							</Context>
+						</Contexts>
+						<Interfaces>
+							<Interface>
+								<Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{00000022-0000-0000-E000-000000000064}">ITComObjectParent</Type>
+							</Interface>
+						</Interfaces>
+						<Parameters>
+							<Parameter>
+								<Name>AdsPort</Name>
+								<BitSize>16</BitSize>
+								<BaseType GUID="{18071995-0000-0000-0000-000000000004}">WORD</BaseType>
+								<Default>
+									<Value>0</Value>
+								</Default>
+								<PTCID>#x03131001</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+							<Parameter>
+								<Name>MqttCreateClient</Name>
+								<BitSize>8</BitSize>
+								<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+								<PTCID>#x03130015</PTCID>
+							</Parameter>
+							<Parameter>
+								<Name>TransportType</Name>
+								<BitSize>32</BitSize>
+								<BaseType GUID="{18071995-0000-0000-0000-00000000000F}">OTCID</BaseType>
+								<PTCID>#x03130001</PTCID>
+							</Parameter>
+							<Parameter>
+								<Name HideSubItems="true">PubSubConnection</Name>
+								<BitSize>5384</BitSize>
+								<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+								<ArrayInfo>
+									<LBound>0</LBound>
+									<Elements>673</Elements>
+								</ArrayInfo>
+								<PTCID>#x03130016</PTCID>
+							</Parameter>
+						</Parameters>
+						<DataAreas>
+							<DataArea>
+								<AreaNo AreaType="InputSrc" ChildArea="true">0</AreaNo>
+								<Name>State</Name>
+								<ContextId>1</ContextId>
+								<ByteSize>2</ByteSize>
+								<Symbol>
+									<Name>PubSubState</Name>
+									<Comment><![CDATA[0 = Disabled
+1 = Paused
+2 = Operational
+3 = Error
+4 = PreOperational]]></Comment>
+									<BitSize>16</BitSize>
+									<BaseType GUID="{DFC06E3F-D7DF-42FD-A9CE-ACC42E4C49B0}">OpcUaPubSubState</BaseType>
+									<BitOffs>0</BitOffs>
+								</Symbol>
+							</DataArea>
+						</DataAreas>
+						<Deployment>
+							<DependsOn>
+								<CLSID ClassFactory="TcIotDrivers">{978857F8-4A76-4AC4-A0C3-F303E3E39C57}</CLSID>
+							</DependsOn>
+						</Deployment>
+						<Properties>
+							<Property>
+								<Name>Category</Name>
+								<Value>NeedIoIdleTask</Value>
+							</Property>
+							<Property>
+								<Name>Category</Name>
+								<Value>HideTcComInterfacePP</Value>
+							</Property>
+							<Property>
+								<Name>Category</Name>
+								<Value>HideTcComPP</Value>
+							</Property>
+							<Property>
+								<Name>Category</Name>
+								<Value>HideTcComParaPP</Value>
+							</Property>
+							<Property>
+								<Name>Category</Name>
+								<Value>HideTcComContextPP</Value>
+							</Property>
+							<Property>
+								<Name>Category</Name>
+								<Value>HideTcComDataAreaPP</Value>
+							</Property>
+							<Property>
+								<Name>Category</Name>
+								<Value>OpcUaRtBox</Value>
+							</Property>
+							<Property>
+								<Name>ChildCategory</Name>
+								<Value>PubBox</Value>
+							</Property>
+						</Properties>
+						<ParentOTCID>#x03010010</ParentOTCID>
+						<ParameterValues>
+							<Value>
+								<Name>AdsPort</Name>
+								<Value>1000</Value>
+							</Value>
+							<Value>
+								<Name>MqttCreateClient</Name>
+								<EnumText>FALSE</EnumText>
+							</Value>
+							<Value>
+								<Name>TransportType</Name>
+								<Value>2</Value>
+							</Value>
+							<Value>
+								<Name>PubSubConnection</Name>
+								<Data>0a0000005075626c697368657231010901000000000000003e000000687474703a2f2f6f7063666f756e646174696f6e2e6f72672f55412d50726f66696c652f5472616e73706f72742f7075627375622d6d7174742d6a736f6e0100a0520123000000ffffffff1b0000006d7174743a2f2f696f742e6265636b686f66662e75733a313838330000000001004f3d0100000000010000001200000044656661756c7457726974657247726f757001010000000000000000000000ffff000000000000010000000000000059400000000000408f4000000000003e000000687474703a2f2f6f7063666f756e646174696f6e2e6f72672f55412f5075625375622d4c61796f7574732f4a534f4e2d446174615365744d65737361676501006f3d0134000000240000006f706375612f6a736f6e2f646174612f312f44656661756c7457726974657247726f7570ffffffffffffffff030000000100673d010400000006000000020000001000000044617461536574205772697465722031010100000000000100000006000000447350756231000000000100713d0155000000ffffffffffffffffffffffff00000000390000006f706375612f6a736f6e2f6d657461646174612f312f44656661756c7457726974657247726f75702f44617461536574205772697465722031000000000000000001006c3d01040000001d0d0000100000004461746153657420577269746572203201020000000000010000000a00000044735075625661727331000000000100713d0155000000ffffffffffffffffffffffff00000000390000006f706375612f6a736f6e2f6d657461646174612f312f44656661756c7457726974657247726f75702f44617461536574205772697465722032000000000000000001006c3d01040000001d0d000000000000</Data>
+							</Value>
+						</ParameterValues>
+					</TmcDesc>
+					<Module Id="#x01010020" KeepUnrestoredLinks="2" TcSmClass="CTComOpcUaObjDef">
+						<Name>DsPub1</Name>
+						<ImageId>1002</ImageId>
+						<Xml>
+							<TcSmExtensions>
+								<TcSmExtension Guid="{C81CD753-E8EB-4086-9C43-151D85679965}">
+									<DataTypePrefix>OpcUa_</DataTypePrefix>
+									<MajorConfigHash>516CA7243883F0DD22BF0576D8D87CF7</MajorConfigHash>
+									<MinorConfigHash>516CA7243883F0DD22BF0576D8D87CF7</MinorConfigHash>
+									<ConfigVarCnt>2</ConfigVarCnt>
+								</TcSmExtension>
+							</TcSmExtensions>
+						</Xml>
+						<TmcDesc GUID="{7D6C8C9D-77D1-4E42-96BD-97D505DA15B4}" TcSmClass="CTComOpcUaObjDef">
+							<Name>Published DataSet</Name>
+							<CLSID ClassFactory="TcIoOpcUa">{03130092-0000-0000-F000-000000000064}</CLSID>
+							<Info>
+								<ImageData>424d16050000000000003604000028000000100000000e00000001000800000000000000000000000000000000000001000000010000000000ff000080ff008000ff008080ff800000ff800080ff808000ffc0c0c0ffc0dcc0fff0caa6ff002040ff002060ff002080ff0020a0ff0020c0ff0020e0ff004000ff004020ff004040ff004060ff004080ff0040a0ff0040c0ff0040e0ff006000ff006020ff006040ff006060ff006080ff0060a0ff0060c0ff0060e0ff008000ff008020ff008040ff008060ff008080ff0080a0ff0080c0ff0080e0ff00a000ff00a020ff00a040ff00a060ff00a080ff00a0a0ff00a0c0ff00a0e0ff00c000ff00c020ff00c040ff00c060ff00c080ff00c0a0ff00c0c0ff00c0e0ff00e000ff00e020ff00e040ff00e060ff00e080ff00e0a0ff00e0c0ff00e0e0ff400000ff400020ff400040ff400060ff400080ff4000a0ff4000c0ff4000e0ff402000ff402020ff402040ff402060ff402080ff4020a0ff4020c0ff4020e0ff404000ff404020ff404040ff404060ff404080ff4040a0ff4040c0ff4040e0ff406000ff406020ff406040ff406060ff406080ff4060a0ff4060c0ff4060e0ff408000ff408020ff408040ff408060ff408080ff4080a0ff4080c0ff4080e0ff40a000ff40a020ff40a040ff40a060ff40a080ff40a0a0ff40a0c0ff40a0e0ff40c000ff40c020ff40c040ff40c060ff40c080ff40c0a0ff40c0c0ff40c0e0ff40e000ff40e020ff40e040ff40e060ff40e080ff40e0a0ff40e0c0ff40e0e0ff800000ff800020ff800040ff800060ff800080ff8000a0ff8000c0ff8000e0ff802000ff802020ff802040ff802060ff802080ff8020a0ff8020c0ff8020e0ff804000ff804020ff804040ff804060ff804080ff8040a0ff8040c0ff8040e0ff806000ff806020ff806040ff806060ff806080ff8060a0ff8060c0ff8060e0ff808000ff808020ff808040ff808060ff808080ff8080a0ff8080c0ff8080e0ff80a000ff80a020ff80a040ff80a060ff80a080ff80a0a0ff80a0c0ff80a0e0ff80c000ff80c020ff80c040ff80c060ff80c080ff80c0a0ff80c0c0ff80c0e0ff80e000ff80e020ff80e040ff80e060ff80e080ff80e0a0ff80e0c0ff80e0e0ffc00000ffc00020ffc00040ffc00060ffc00080ffc000a0ffc000c0ffc000e0ffc02000ffc02020ffc02040ffc02060ffc02080ffc020a0ffc020c0ffc020e0ffc04000ffc04020ffc04040ffc04060ffc04080ffc040a0ffc040c0ffc040e0ffc06000ffc06020ffc06040ffc06060ffc06080ffc060a0ffc060c0ffc060e0ffc08000ffc08020ffc08040ffc08060ffc08080ffc080a0ffc080c0ffc080e0ffc0a000ffc0a020ffc0a040ffc0a060ffc0a080ffc0a0a0ffc0a0c0ffc0a0e0ffc0c000ffc0c020ffc0c040ffc0c060ffc0c080ffc0c0a0fff0fbffffa4a0a0ff808080ff0000ffff00ff00ff00ffffffff0000ffff00ffffffff00ffffffffff05050505050505050505050505050505efefefefefefefefefefefefefefefef05050505050505050505050505050505efefefefefefefefefefefefefefefef05050505010101010101010101050505efefefef01574f4f4f4e0e0e01efefeffdfd0101010101010101014e01fdfdfdfdfd015757574f4e4e0e014e01fdfdfdfdfd015757574f4e4e0e014e01fdfdfdfdfd015757574f4e4e4e014f01fdfdfdfdfd015f5f57574f4f4e010101fdfdfdfdfd019f9f57574f4f4f01fdfdfdfdfdfdfd010101010101010101fdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfd</ImageData>
+								<TabExtension GUID="{CF6442BD-ED36-49FE-8690-FA3EDF67864C}"/>
+							</Info>
+							<InitSequence>SO</InitSequence>
+							<Contexts>
+								<Context>
+									<Id>1</Id>
+								</Context>
+							</Contexts>
+							<Interfaces>
+								<Interface>
+									<Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+								</Interface>
+								<Interface>
+									<Type GUID="{00000022-0000-0000-E000-000000000064}">ITComObjectParent</Type>
+								</Interface>
+							</Interfaces>
+							<Parameters>
+								<Parameter>
+									<Name HideSubItems="true">DataSetMetaData</Name>
+									<BitSize>1504</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+									<ArrayInfo>
+										<LBound>0</LBound>
+										<Elements>188</Elements>
+									</ArrayInfo>
+									<PTCID>#x03130002</PTCID>
+								</Parameter>
+								<Parameter>
+									<Name HideSubItems="true">DataSetSource</Name>
+									<BitSize>968</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+									<ArrayInfo>
+										<LBound>0</LBound>
+										<Elements>121</Elements>
+									</ArrayInfo>
+									<PTCID>#x03130004</PTCID>
+								</Parameter>
+							</Parameters>
+							<DataAreas>
+								<DataArea>
+									<AreaNo AreaType="InputSrc" ChildArea="true">0</AreaNo>
+									<Name>State</Name>
+									<ContextId>1</ContextId>
+									<ByteSize>2</ByteSize>
+									<Symbol>
+										<Name>PubSubState</Name>
+										<Comment><![CDATA[0 = Disabled
+1 = Paused
+2 = Operational
+3 = Error
+4 = PreOperational]]></Comment>
+										<BitSize>16</BitSize>
+										<BaseType GUID="{DFC06E3F-D7DF-42FD-A9CE-ACC42E4C49B0}">OpcUaPubSubState</BaseType>
+										<BitOffs>0</BitOffs>
+									</Symbol>
+								</DataArea>
+							</DataAreas>
+							<Properties>
+								<Property>
+									<Name>Category</Name>
+									<Value>PubBox</Value>
+								</Property>
+								<Property>
+									<Name>Category</Name>
+									<Value>HideTcComInterfacePP</Value>
+								</Property>
+								<Property>
+									<Name>Category</Name>
+									<Value>HideTcComPP</Value>
+								</Property>
+								<Property>
+									<Name>Category</Name>
+									<Value>HideTcComParaPP</Value>
+								</Property>
+								<Property>
+									<Name>Category</Name>
+									<Value>HideTcComContextPP</Value>
+								</Property>
+								<Property>
+									<Name>Category</Name>
+									<Value>HideTcComDataAreaPP</Value>
+								</Property>
+								<Property>
+									<Name>ChildCategory</Name>
+									<Value>None</Value>
+								</Property>
+							</Properties>
+							<ParentOTCID>#x01010010</ParentOTCID>
+							<ParameterValues>
+								<Value>
+									<Name>DataSetMetaData</Name>
+									<Data>00000000000000000000000000000000060000004473507562310002000000100000004d41494e2e73656e64446174612e49640102000000656e0000060006ffffffff00000000000000003ce9da6ba919ef4289184250d3462ca200000000150000004d41494e2e73656e64446174612e4d6573736167650102000000656e00000c000cffffffff00000000ff000000837c0209a335a6488ea0c144211c0ad80000000000000000000000000000000000000000e129b031e129b031</Data>
+								</Value>
+								<Value>
+									<Name>DataSetSource</Name>
+									<Data>02000000030200100000004d41494e2e73656e64446174612e49640d0000000000000000000000000000000000000000000000ffffffff0000000000030200150000004d41494e2e73656e64446174612e4d6573736167650d0000000000000000000000000000000000000000000000ffffffff0000000000</Data>
+								</Value>
+							</ParameterValues>
+						</TmcDesc>
+					</Module>
+					<Module Id="#x01010030" KeepUnrestoredLinks="2" TcSmClass="CTComOpcUaObjDef">
+						<Name>DsPubVars1</Name>
+						<ImageId>1003</ImageId>
+						<Xml>
+							<TcSmExtensions>
+								<TcSmExtension Guid="{C81CD753-E8EB-4086-9C43-151D85679965}">
+									<DataTypePrefix>OpcUa_</DataTypePrefix>
+									<MajorConfigHash>D41D8CD98F00B204E9800998ECF8427E</MajorConfigHash>
+									<MinorConfigHash>D41D8CD98F00B204E9800998ECF8427E</MinorConfigHash>
+									<ConfigVarCnt>0</ConfigVarCnt>
+								</TcSmExtension>
+							</TcSmExtensions>
+						</Xml>
+						<TmcDesc GUID="{E988C475-DF15-4169-B0A7-2B1C2A2BD447}" TcSmClass="CTComOpcUaObjDef">
+							<Name>Published DataSet with Variables</Name>
+							<CLSID ClassFactory="TcIoOpcUa">{03130094-0000-0000-F000-000000000064}</CLSID>
+							<Info>
+								<ImageData>424d16050000000000003604000028000000100000000e0000000100080000000000e00000000000000000000000000000000000000000000000000080000080000000808000800000008000800080800000c0c0c000c0dcc000f0caa6000020400000206000002080000020a0000020c0000020e00000400000004020000040400000406000004080000040a0000040c0000040e00000600000006020000060400000606000006080000060a0000060c0000060e00000800000008020000080400000806000008080000080a0000080c0000080e00000a0000000a0200000a0400000a0600000a0800000a0a00000a0c00000a0e00000c0000000c0200000c0400000c0600000c0800000c0a00000c0c00000c0e00000e0000000e0200000e0400000e0600000e0800000e0a00000e0c00000e0e00040000000400020004000400040006000400080004000a0004000c0004000e00040200000402020004020400040206000402080004020a0004020c0004020e00040400000404020004040400040406000404080004040a0004040c0004040e00040600000406020004060400040606000406080004060a0004060c0004060e00040800000408020004080400040806000408080004080a0004080c0004080e00040a0000040a0200040a0400040a0600040a0800040a0a00040a0c00040a0e00040c0000040c0200040c0400040c0600040c0800040c0a00040c0c00040c0e00040e0000040e0200040e0400040e0600040e0800040e0a00040e0c00040e0e00080000000800020008000400080006000800080008000a0008000c0008000e00080200000802020008020400080206000802080008020a0008020c0008020e00080400000804020008040400080406000804080008040a0008040c0008040e00080600000806020008060400080606000806080008060a0008060c0008060e00080800000808020008080400080806000808080008080a0008080c0008080e00080a0000080a0200080a0400080a0600080a0800080a0a00080a0c00080a0e00080c0000080c0200080c0400080c0600080c0800080c0a00080c0c00080c0e00080e0000080e0200080e0400080e0600080e0800080e0a00080e0c00080e0e000c0000000c0002000c0004000c0006000c0008000c000a000c000c000c000e000c0200000c0202000c0204000c0206000c0208000c020a000c020c000c020e000c0400000c0402000c0404000c0406000c0408000c040a000c040c000c040e000c0600000c0602000c0604000c0606000c0608000c060a000c060c000c060e000c0800000c0802000c0804000c0806000c0808000c080a000c080c000c080e000c0a00000c0a02000c0a04000c0a06000c0a08000c0a0a000c0a0c000c0a0e000c0c00000c0c02000c0c04000c0c06000c0c08000c0c0a000f0fbff00a4a0a000808080000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff0005050505050505050505050505050505efefefefefefefefefefefefefefefef05050505050505050505050505050505efefefefefefefefefefefefefefefef05050505010101010101010101050505efefefef01574f4f4f0e0e0e01efefeffdfd0101010101010101016701fdfdfdfdfd015757574f4e4e0e016766fdfdfdfdfd015757574f4e67676f7f6667fdfdfdfd015757574f4e7f7f7f7f7f7f7ffdfdfd015f5f57574fbfbfbfbf7f7ffdfdfdfd019f9f57574f4f4e01bf7ffdfdfdfdfd0101010101010101017ffdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfd</ImageData>
+								<TabExtension GUID="{CF6442BD-ED36-49FE-8690-FA3EDF67864C}"/>
+							</Info>
+							<InitSequence>SO</InitSequence>
+							<Contexts>
+								<Context>
+									<Id>1</Id>
+									<DependOn>ParentObject</DependOn>
+								</Context>
+							</Contexts>
+							<Interfaces>
+								<Interface>
+									<Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+								</Interface>
+								<Interface>
+									<Type GUID="{00000022-0000-0000-E000-000000000064}">ITComObjectParent</Type>
+								</Interface>
+							</Interfaces>
+							<Parameters>
+								<Parameter>
+									<Name HideSubItems="true">DataSetMetaData</Name>
+									<BitSize>848</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+									<ArrayInfo>
+										<LBound>0</LBound>
+										<Elements>106</Elements>
+									</ArrayInfo>
+									<PTCID>#x03130002</PTCID>
+								</Parameter>
+								<Parameter>
+									<Name HideSubItems="true">DataSetSource</Name>
+									<BitSize>632</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+									<ArrayInfo>
+										<LBound>0</LBound>
+										<Elements>79</Elements>
+									</ArrayInfo>
+									<PTCID>#x03130004</PTCID>
+								</Parameter>
+							</Parameters>
+							<DataAreas>
+								<DataArea>
+									<AreaNo AreaType="InputSrc" ChildArea="true">0</AreaNo>
+									<Name>State</Name>
+									<ContextId>1</ContextId>
+									<ByteSize>2</ByteSize>
+									<Symbol>
+										<Name>PubSubState</Name>
+										<Comment><![CDATA[0 = Disabled
+1 = Paused
+2 = Operational
+3 = Error
+4 = PreOperational]]></Comment>
+										<BitSize>16</BitSize>
+										<BaseType GUID="{DFC06E3F-D7DF-42FD-A9CE-ACC42E4C49B0}">OpcUaPubSubState</BaseType>
+										<BitOffs>0</BitOffs>
+									</Symbol>
+								</DataArea>
+								<DataArea>
+									<AreaNo AreaType="OutputDst" ChildArea="true" DynamicArea="true">2</AreaNo>
+									<Name>Outputs</Name>
+									<ContextId>1</ContextId>
+									<ByteSize>1</ByteSize>
+									<Symbol>
+										<Name>Var 7</Name>
+										<BitSize>8</BitSize>
+										<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+										<BitOffs>0</BitOffs>
+									</Symbol>
+								</DataArea>
+							</DataAreas>
+							<Properties>
+								<Property>
+									<Name>Category</Name>
+									<Value>PubBox</Value>
+								</Property>
+								<Property>
+									<Name>Category</Name>
+									<Value>HideTcComInterfacePP</Value>
+								</Property>
+								<Property>
+									<Name>Category</Name>
+									<Value>HideTcComPP</Value>
+								</Property>
+								<Property>
+									<Name>Category</Name>
+									<Value>HideTcComParaPP</Value>
+								</Property>
+								<Property>
+									<Name>Category</Name>
+									<Value>HideTcComContextPP</Value>
+								</Property>
+								<Property>
+									<Name>Category</Name>
+									<Value>HideTcComDataAreaPP</Value>
+								</Property>
+								<Property>
+									<Name>ChildCategory</Name>
+									<Value>None</Value>
+								</Property>
+							</Properties>
+							<ParentOTCID>#x01010010</ParentOTCID>
+							<ParameterValues>
+								<Value>
+									<Name>DataSetMetaData</Name>
+									<Data>000000000000000000000000000000000a000000447350756256617273310001000000050000005661722037000000010001ffffffff0000000000000000cea3ed8db48f0044953d18acf4c0b4bb00000000000000000000000000000000000000007a2db0317a2db031</Data>
+								</Value>
+								<Value>
+									<Name>DataSetSource</Name>
+									<Data>01000000030100230000005075626c6973686572312e447350756256617273312e4f7574707574732e56617220370d0000000000000000000000000000000000000000000000ffffffff0000000000</Data>
+								</Value>
+							</ParameterValues>
+						</TmcDesc>
+					</Module>
+				</Module>
+				<ModuleDev GUID="{518ED3D9-9116-402D-B302-6151DC527BC7}">
+					<Name>OPC UA Pub-Sub Device</Name>
+					<CLSID ClassFactory="TcIoOpcUa">{0313007E-0000-0000-F000-000000000064}</CLSID>
+					<Info>
+						<ImageData>424de6000000000000007600000028000000100000000e000000010004000000000070000000000000000000000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00dddddddddcccddddddd777ddcdddcddddddddddcdddddcdddd7777dcddccccdddddddddcddcddcdddddd77ddcdcdcddddddddddddcccdddddd00dd0ddddd00dd8088080888808808d0dd0d0dddd0dddd8088080008808888d0dd0d0dd0d0dddd8088080880808808dd00dd000ddd00dd</ImageData>
+						<TabExtension GUID="{881CD753-E8EB-4086-9C43-151D85679964}"/>
+					</Info>
+					<Licenses>
+						<License>
+							<LicenseId>{67B4BA05-C1F2-4184-AE5F-4BAB0FFB09E1}</LicenseId>
+						</License>
+					</Licenses>
+					<InitSequence>PSO</InitSequence>
+					<Contexts>
+						<Context>
+							<Id>1</Id>
+							<DependOn>DataArea</DependOn>
+						</Context>
+					</Contexts>
+					<Interfaces>
+						<Interface>
+							<Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+						</Interface>
+						<Interface>
+							<Type GUID="{03000010-0000-0000-E000-000000000064}">ITcCyclic</Type>
+						</Interface>
+						<Interface>
+							<Type GUID="{03000011-0000-0000-E000-000000000064}">ITcIoCyclic</Type>
+						</Interface>
+						<Interface>
+							<Type GUID="{03010035-0000-0000-E000-000000000064}">ITcIoEthProtocol</Type>
+						</Interface>
+						<Interface>
+							<Type GUID="{00000022-0000-0000-E000-000000000064}">ITComObjectParent</Type>
+						</Interface>
+					</Interfaces>
+					<Parameters>
+						<Parameter>
+							<Name>EthAdapter</Name>
+							<BitSize>32</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-00000000000F}">OTCID</BaseType>
+							<PTCID>#x03002040</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>TcIoIpSettings</Name>
+							<BitSize>128</BitSize>
+							<SubItem>
+								<Name>IpAddress</Name>
+								<Type GUID="{18071995-0000-0000-0000-00000000003E}">IPADDR</Type>
+								<BitSize>32</BitSize>
+								<BitOffs>0</BitOffs>
+							</SubItem>
+							<SubItem>
+								<Name>SubnetMask</Name>
+								<Type GUID="{18071995-0000-0000-0000-00000000003E}">IPADDR</Type>
+								<BitSize>32</BitSize>
+								<BitOffs>32</BitOffs>
+							</SubItem>
+							<SubItem>
+								<Name>Gateway</Name>
+								<Type GUID="{18071995-0000-0000-0000-00000000003E}">IPADDR</Type>
+								<BitSize>32</BitSize>
+								<BitOffs>64</BitOffs>
+							</SubItem>
+							<SubItem>
+								<Name>DhcpEnable</Name>
+								<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+								<BitSize>8</BitSize>
+								<BitOffs>96</BitOffs>
+							</SubItem>
+							<SubItem>
+								<Name>ManualSettings</Name>
+								<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+								<BitSize>8</BitSize>
+								<BitOffs>104</BitOffs>
+							</SubItem>
+							<PTCID>#x03002050</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>Image</Name>
+							<BitSize>32</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-00000000000F}">OTCID</BaseType>
+							<PTCID>#x03002030</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>IoCaller</Name>
+							<BitSize>32</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-00000000000F}">OTCID</BaseType>
+							<PTCID>#x03002010</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>TcIoOwnAmsNetId</Name>
+							<BitSize>48</BitSize>
+							<SubItem>
+								<Name>netId</Name>
+								<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
+								<BitSize>48</BitSize>
+								<BitOffs>0</BitOffs>
+							</SubItem>
+							<PTCID>#x03000028</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>DefaultMapping</Name>
+							<BitSize>32</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-000000000007}">DWORD</BaseType>
+							<Default>
+								<Value>1</Value>
+							</Default>
+							<PTCID>#x03002110</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name HideSubItems="true">ProviderList</Name>
+							<BitSize>256</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+							<ArrayInfo>
+								<LBound>0</LBound>
+								<Elements>32</Elements>
+							</ArrayInfo>
+							<PTCID>#x03130005</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>UdpMtu</Name>
+							<BitSize>32</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+							<Default>
+								<Value>1472</Value>
+							</Default>
+							<PTCID>#x03130007</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>UdpPort</Name>
+							<BitSize>16</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-000000000004}">WORD</BaseType>
+							<Default>
+								<Value>4840</Value>
+							</Default>
+							<PTCID>#x03130008</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name HideSubItems="true">NamespaceArray</Name>
+							<BitSize>600</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+							<ArrayInfo>
+								<LBound>0</LBound>
+								<Elements>75</Elements>
+							</ArrayInfo>
+							<PTCID>#x0313000c</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>EnableMqtt</Name>
+							<BitSize>8</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+							<PTCID>#x0313000b</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>MQTT HostName</Name>
+							<BitSize>2048</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+							<PTCID>#x02020113</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>TLS Insecure</Name>
+							<BitSize>8</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+							<PTCID>#x0202011a</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name HideSubItems="true">PubSubConf2Dt</Name>
+							<BitSize>11008</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+							<ArrayInfo>
+								<LBound>0</LBound>
+								<Elements>1376</Elements>
+							</ArrayInfo>
+							<PTCID>#x0313000d</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>MQTT UserName</Name>
+							<BitSize>2048</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+							<PTCID>#x02020106</PTCID>
+						</Parameter>
+						<Parameter>
+							<Name>MQTT Password</Name>
+							<BitSize>2048</BitSize>
+							<BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+							<PTCID>#x02020107</PTCID>
+						</Parameter>
+					</Parameters>
+					<DataAreas>
+						<DataArea>
+							<AreaNo AreaType="InputSrc" AllowChildAreas="true">0</AreaNo>
+							<Name>State</Name>
+							<ContextId>1</ContextId>
+							<ByteSize>14</ByteSize>
+							<Symbol>
+								<Name>DevState</Name>
+								<Comment><![CDATA[0x0001 = Link Error
+0x0002 = MQTT Connection Error]]></Comment>
+								<BitSize>16</BitSize>
+								<BaseType GUID="{18071995-0000-0000-0000-000000000004}">WORD</BaseType>
+								<BitOffs>0</BitOffs>
+							</Symbol>
+							<Symbol>
+								<Name>AmsNetId</Name>
+								<BitSize>48</BitSize>
+								<BaseType GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</BaseType>
+								<BitOffs>16</BitOffs>
+							</Symbol>
+						</DataArea>
+						<DataArea>
+							<AreaNo AreaType="InputSrc" AllowChildAreas="true">1</AreaNo>
+							<Name>Inputs</Name>
+							<ContextId>1</ContextId>
+							<ByteSize>0</ByteSize>
+						</DataArea>
+						<DataArea>
+							<AreaNo AreaType="OutputDst" AllowChildAreas="true">2</AreaNo>
+							<Name>Outputs</Name>
+							<ContextId>1</ContextId>
+							<ByteSize>3</ByteSize>
+							<Symbol>
+								<Name>DevCtrl</Name>
+								<BitSize>16</BitSize>
+								<BaseType GUID="{18071995-0000-0000-0000-000000000004}">WORD</BaseType>
+								<BitOffs>0</BitOffs>
+							</Symbol>
+						</DataArea>
+					</DataAreas>
+					<Properties>
+						<Property>
+							<Name>Category</Name>
+							<Value>NeedEthernetAdapterPort</Value>
+						</Property>
+						<Property>
+							<Name>Category</Name>
+							<Value>NeedIoIdleTask</Value>
+						</Property>
+						<Property>
+							<Name>Category</Name>
+							<Value>HideTcComParaPP</Value>
+						</Property>
+						<Property>
+							<Name>Category</Name>
+							<Value>HideTcComPP</Value>
+						</Property>
+						<Property>
+							<Name>Category</Name>
+							<Value>HideTcComInterfacePP</Value>
+						</Property>
+						<Property>
+							<Name>Category</Name>
+							<Value>HideTcComDataAreaPP</Value>
+						</Property>
+						<Property>
+							<Name>Category</Name>
+							<Value>HideTcComContextPP</Value>
+						</Property>
+						<Property>
+							<Name>ChildCategory</Name>
+							<Value>OpcUaRtBox</Value>
+						</Property>
+					</Properties>
+					<ParameterValues>
+						<Value>
+							<Name>EthAdapter</Name>
+							<Value>50397201</Value>
+						</Value>
+						<Value>
+							<Name>TcIoIpSettings.IpAddress</Name>
+							<Value>168562850</Value>
+						</Value>
+						<Value>
+							<Name>TcIoIpSettings.SubnetMask</Name>
+							<Value>4294963200</Value>
+						</Value>
+						<Value>
+							<Name>TcIoIpSettings.Gateway</Name>
+							<Value>168562689</Value>
+						</Value>
+						<Value>
+							<Name>TcIoIpSettings.DhcpEnable</Name>
+							<EnumText>TRUE</EnumText>
+						</Value>
+						<Value>
+							<Name>TcIoIpSettings.ManualSettings</Name>
+							<EnumText>FALSE</EnumText>
+						</Value>
+						<Value>
+							<Name>Image</Name>
+							<Value>50593808</Value>
+						</Value>
+						<Value>
+							<Name>IoCaller</Name>
+							<Value>0</Value>
+						</Value>
+						<Value>
+							<Name>TcIoOwnAmsNetId.netId</Name>
+							<Data>0a0a0b010201</Data>
+						</Value>
+						<Value>
+							<Name>DefaultMapping</Name>
+							<Value>1</Value>
+						</Value>
+						<Value>
+							<Name>ProviderList</Name>
+							<Data>0a0a0b010101016d12000403000000000a0a0b01010153030020500802000000</Data>
+						</Value>
+						<Value>
+							<Name>UdpMtu</Name>
+							<Value>1472</Value>
+						</Value>
+						<Value>
+							<Name>UdpPort</Name>
+							<Value>4840</Value>
+						</Value>
+						<Value>
+							<Name>NamespaceArray</Name>
+							<Data>020000002100000075726e3a4265636b686f66664175746f6d6174696f6e3a55613a446576696365311e00000075726e3a4265636b686f66664175746f6d6174696f6e3a55613a504c4331</Data>
+						</Value>
+						<Value>
+							<Name>EnableMqtt</Name>
+							<EnumText>TRUE</EnumText>
+						</Value>
+						<Value>
+							<Name>MQTT HostName</Name>
+							<String>iot.beckhoff.us</String>
+						</Value>
+						<Value>
+							<Name>TLS Insecure</Name>
+							<EnumText>FALSE</EnumText>
+						</Value>
+						<Value>
+							<Name>PubSubConf2Dt</Name>
+							<Data>01003e3c0157050000020000002100000075726e3a4265636b686f66664175746f6d6174696f6e3a55613a446576696365311e00000075726e3a4265636b686f66664175746f6d6174696f6e3a55613a504c4331000000000000000000000000ffffffff000000001601002e5d01ee04000002000000060000004473507562310000000000000000000000000000000000000000060000004473507562310002000000100000004d41494e2e73656e64446174612e49640102000000656e0000060006ffffffff00000000000000003ce9da6ba919ef4289184250d3462ca200000000150000004d41494e2e73656e64446174612e4d6573736167650102000000656e00000c000cffffffff00000000ff000000837c0209a335a6488ea0c144211c0ad80000000000000000000000000000000000000000e129b031e129b0310000000001003f3d017900000002000000030200100000004d41494e2e73656e64446174612e49640d0000000000000000000000000000000000000000000000ffffffff0000000000030200150000004d41494e2e73656e64446174612e4d6573736167650d0000000000000000000000000000000000000000000000ffffffff00000000000a0000004473507562566172733100000000000000000000000000000000000000000a000000447350756256617273310001000000050000005661722037000000010001ffffffff0000000000000000cea3ed8db48f0044953d18acf4c0b4bb00000000000000000000000000000000000000007a2db0317a2db0310000000001003f3d014f00000001000000030100230000005075626c6973686572312e447350756256617273312e4f7574707574732e56617220370d0000000000000000000000000000000000000000000000ffffffff0000000000010000000a0000005075626c697368657231010901000000000000003e000000687474703a2f2f6f7063666f756e646174696f6e2e6f72672f55412d50726f66696c652f5472616e73706f72742f7075627375622d6d7174742d6a736f6e0100a0520123000000ffffffff1b0000006d7174743a2f2f696f742e6265636b686f66662e75733a313838330000000001004f3d0100000000010000001200000044656661756c7457726974657247726f75700101000000ffffffff00000000ffff000000000000010000000000000059400000000000408f4000000000003e000000687474703a2f2f6f7063666f756e646174696f6e2e6f72672f55412f5075625375622d4c61796f7574732f4a534f4e2d446174615365744d65737361676501006f3d0134000000240000006f706375612f6a736f6e2f646174612f312f44656661756c7457726974657247726f7570ffffffffffffffff030000000100673d010400000006000000020000001000000044617461536574205772697465722031010100000000000100000006000000447350756231000000000100713d0155000000ffffffffffffffffffffffff00000000390000006f706375612f6a736f6e2f6d657461646174612f312f44656661756c7457726974657247726f75702f44617461536574205772697465722031000000000000000001006c3d01040000001d0d0000100000004461746153657420577269746572203201020000000000010000000a00000044735075625661727331000000000100713d0155000000ffffffffffffffffffffffff00000000390000006f706375612f6a736f6e2f6d657461646174612f312f44656661756c7457726974657247726f75702f44617461536574205772697465722032000000000000000001006c3d01040000001d0d0000000000000100000000000000000000000000000000000000000000000000000000</Data>
+						</Value>
+						<Value>
+							<Name>MQTT UserName</Name>
+							<String>BausUser</String>
+						</Value>
+						<Value>
+							<Name>MQTT Password</Name>
+							<String>TwinCAT</String>
+						</Value>
+					</ParameterValues>
+				</ModuleDev>
+			</Device>
+		</Io>
+	</Project>
+</TcSmProject>
