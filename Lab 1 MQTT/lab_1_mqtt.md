@@ -72,7 +72,7 @@ fbGetSysId(bExecute:=TRUE);
 fbMqttClient.Execute(TRUE);
 ```
 
-Activate and run the PLC project. Before we toggle our send bit, open up the MQTT desktop client and create a connection to the broker. If we subscribe to the `nem_2024/#` path, we will receive all messages from all sub-topics. Toggle the send bit, and we should start to see messages coming in with new topics created for each sender's system GUID.
+Activate and run the PLC project. Before we toggle our send bit, open up the MQTT desktop client and create a connection to the broker. If we subscribe to the `nem_2026/#` path, we will receive all messages from all sub-topics. Toggle the send bit, and we should start to see messages coming in with new topics created for each sender's system GUID.
 
 <a id="json"></a>
 
